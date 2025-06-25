@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--    Main Menu-->
+    <menuitem id="hr_payroll_menu_root"
+              name="HR Payroll"
+              web_icon="employee_payroll,static/description/icon.png"
+              sequence="10"/>
+
+    <!--    Configuration menu-->
+    <menuitem id="hr_payroll_config_menu"
+              name="Configuration"
+              sequence="50"
+              parent="hr_payroll_menu_root"/>
+   
+</odoo>

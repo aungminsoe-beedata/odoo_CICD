@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--Hotel Floor Form View-->
+    <record id="salary_period_view_form" model="ir.ui.view">
+        <field name="name">salary.period.view.form</field>
+        <field name="model">salary.period</field>
+        <field name="arch" type="xml">
+            <form string="Salary Period">
+                <header>
+                    <button name="action_verify" string="Verify"
+                            type="object"
+                            class="btn-primary"/>
+
+                    <button name="action_draft" string="Reset To Draft"
+                            type="object"
+                            />
+                            
+                    <button name="action_cancel" string="Cancel"
+                            type="object"/>
+
+
+                    <field name="status" widget="statusbar" readonly="1"/>
+
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name = "month_start_date"/>
+                            <field name =  "month_end_date"/> 
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <!--Salary Period Tree View-->
+    <record id="salary_period_view_tree" model="ir.ui.view">
+        <field name="name">salary.period.view.tree</field>
+        <field name="model">salary.period</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name = "month_start_date"/>
+                <field name =  "month_end_date"/> 
+            </tree>
+        </field>
+    </record>
+
+
+
+    <!--Salary Period calendar view Action-->
+    <record id="salary_period_view_calendar" model="ir.ui.view">
+        <field name="name">salary.period.view.calendar</field>
+        <field name="model">salary.period</field>
+        <field  name="priority" eval ="2"/>
+
+        <field name="arch" type="xml">
+            <!-- <tree>
+                <field name="name"/>
+                <field name = "month_start_date"/>
+                <field name =  "month_end_date"/> 
+            </tree> -->
+            <calendar string="Activities" create = "0" mode ="month"
+                date_start="month_start_date" date_stop="month_end_date" color = "name"
+            >
+                <field name ="name"/>
+
+            </calendar>
+        </field>
+    </record>
+
+
+
+    <!--Salary Period Menu Action-->
+    <record id="salary_period_action" model="ir.actions.act_window">
+        <field name="name">Salary Date</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">salary.period</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!--salary period start and end Menu-->
+    <menuitem id="salary_period_menu"
+              name="Salary Time"
+              action="salary_period_action"
+              parent="hr_payroll_config_menu"
+              sequence="50"/>
+</odoo>
